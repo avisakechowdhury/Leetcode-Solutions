@@ -1,0 +1,25 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        d = {}
+        for item in nums:
+            if item in d:
+                d[item] += 1
+            else:
+                d[item] = 1
+        arr = [i for i in range(n+1)]
+        
+        for itm in arr:
+            if itm in d:
+                continue
+            else:
+                return itm
+
+
+        
+       #  we can add sum of n numbers - sum of list elements
+       #  Solution - 2  , Much faster Solution 
+        n = len(nums)
+        return (n * (n+1) // 2 - (sum(nums)))
+        
+       
