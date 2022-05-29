@@ -1,0 +1,31 @@
+class Solution:
+    def maxProduct(self, words: List[str]) -> int:
+        d = defaultdict(set)
+        
+        for w in words:
+            d[w] = set(w)
+            
+        def not_common(s,t):
+            if d[s] & d[t]:
+                return False
+            else:
+                return True
+        maxProd = 0
+        for i in words:
+            for j in words:
+                if not_common(i,j):
+                    prod = len(i) * len(j)
+                    maxProd = max(maxProd, prod)
+        
+        return maxProd
+        
+        # concept ok :: TLE
+        
+        # maxProd = 0
+        # for i in words:
+        #     for j in words:
+        #         if set(i) & set(j):
+        #             continue
+        #         prod = len(i) * len(j)
+        #         maxProd = max(maxProd,prod)
+        # return maxProd
