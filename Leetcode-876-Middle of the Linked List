@@ -1,0 +1,29 @@
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        temp = head
+        n = 0
+        while temp:
+            n += 1 
+            temp = temp.next
+        n = n//2 + 1
+        
+        dummy = head 
+        while n-1:
+            dummy = dummy.next
+            n -= 1 
+        return dummy
+        
+        
+        ####################################### 
+        #Tortoise Method 
+        
+        
+ class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    # Tortoise Method
+        slow = head
+        fast = head 
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next 
+        return slow
