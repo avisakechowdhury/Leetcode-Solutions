@@ -1,0 +1,40 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        if not head or not head.next:
+            return None
+        slow = head
+        fast = head
+        entry = head
+        
+        # finding the collison point 
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:                # means there is a cycle
+                while slow != entry:        # findning the starting node
+                    slow = slow.next
+                    entry = entry.next
+                return entry
+        return None
+        
+        
+        # Brute-Force Approach
+        
+        # if not head or not head.next:
+        #     return None
+        # abc = set()
+        # dummy = head
+        # while dummy:
+        #     if dummy in abc:
+        #         return dummy
+        #     else:
+        #         abc.add(dummy)
+        #         dummy = dummy.next
+        # return None
